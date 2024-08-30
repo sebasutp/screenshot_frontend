@@ -5,5 +5,6 @@ backend. Then run the frontend using in development mode
 using:
 
 ```
+  npm install
   npm run dev
 ```
