@@ -2,6 +2,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { Navigate, useNavigate } from 'react-router-dom';
 import './App.css'
+import Header from './components/Header.jsx';
 import Login from './components/Login.jsx'
 import Item from './components/Item.jsx';
 import Screenshots from './components/Screenshots.jsx';
@@ -30,18 +31,18 @@ function App() {
           <div name = "unknown_user_header"></div>
         )
       }
-
+      {/* <Header /> */}
       <Routes>
-          {/* Public Route (accessible without login) */}
-          <Route path="/login" element={<Login />} />
+        {/* Public Route (accessible without login) */}
+        <Route path="/login" element={<Login />} />
 
-          {/* Protected Route (requires login) */}
-          <Route path="/" element={token ? <Screenshots /> : <Navigate replace to="/login" />} />
-          <Route path="/item/:id" element={<Item />} />
-          <Route path="/screenshot/new" element={<NewScreenshot />} />
-          <Route path="/screenshot/plugin" element={<NewScreenshotPlugin />} />
+        {/* Protected Route (requires login) */}
+        <Route path="/" element={token ? <Screenshots /> : <Navigate replace to="/login" />} />
+        <Route path="/item/:id" element={<Item />} />
+        <Route path="/screenshot/new" element={<NewScreenshot />} />
+        <Route path="/screenshot/plugin" element={<NewScreenshotPlugin />} />
       </Routes>
-      </div>
+    </div>
    )
 }
 export default App
