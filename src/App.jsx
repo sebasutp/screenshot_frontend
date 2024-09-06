@@ -1,4 +1,3 @@
-//import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Navigate, useNavigate } from 'react-router-dom';
 import './App.css'
@@ -9,12 +8,10 @@ import NewScreenshot from './components/NewScreenshot.jsx';
 import NewScreenshotPlugin from './components/PluginScreenshot.jsx';
 
 function App() {
-  //const [token, setToken] = useState(localStorage.getItem('token'))
   const token = localStorage.getItem('token')
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    //setToken(null)
     localStorage.removeItem('token');
     navigate('/login');
     // Optionally redirect to login page or handle other logout logic
