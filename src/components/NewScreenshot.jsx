@@ -8,7 +8,6 @@ function NewScreenshot() {
  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    //if (!image) return;
     console.log(`submitting ${screenshotUrl}`);
   };
 

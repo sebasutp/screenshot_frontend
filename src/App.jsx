@@ -1,4 +1,3 @@
-//import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom';
 import { Navigate, useNavigate } from 'react-router-dom';
 import './App.css'
@@ -10,9 +9,8 @@ import NewScreenshotPlugin from './components/PluginScreenshot.jsx';
 import NavMenu from './components/NavMenu.jsx';
 
 function App() {
-  //const [token, setToken] = useState(localStorage.getItem('token'))
   const token = localStorage.getItem('token')
- 
+  
   return (
     <div>
       <Routes>
