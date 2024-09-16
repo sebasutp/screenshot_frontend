@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import NavMenu from './NavMenu';
+import CardScreenshot from './CardScreenshot';
 
 function Screenshots() {
-  const [screenshots, setScreenshots] = useState({});
+  const [screenshots, setScreenshots] = useState([]);
   const [is_loading, setIsLoading] = useState(false);
   const token = localStorage.getItem('token');
 
@@ -27,13 +29,27 @@ function Screenshots() {
       });
   }, []);
 
+  console.log("estos es",screenshots)
+  
   return (
     <div>
       {is_loading ? (
         <img src='/assets/loading.gif' alt="Loading..." />
       ) : (
         <div>
-          <p>Number of screenshots: {screenshots.length}</p>
+          <NavMenu />
+          <div className="flex flex-col items-center justify-center mt-24">
+            <p className="text-xl font-semibold text-gray-700 mb-16">Number of screenshots: {screenshots.length}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {screenshots.map((screen, i) => (
+                <CardScreenshot 
+                  key={i}
+                  image={screen.img}
+                  urlImage={screen.url}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       )}
     </div>

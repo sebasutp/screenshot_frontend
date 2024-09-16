@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 
 function Item() {
@@ -27,10 +27,16 @@ function Item() {
       {is_loading ? (
         <img src='/assets/loading.gif' alt="Loading..." />
       ) : (
-        <div>
-          <a href={screenshot.url}>{screenshot.url}</a>
-          <br />
-          <img src={screenshot.img} width="50%" />
+        <div className="flex flex-col items-center justify-center">
+          <div className="flex flex-row justify-center space-x-2">
+            <p className="text-md font-semibold text-indigo-700 mb-8">Fuente del screenshot:</p>
+            <a href={screenshot.url}
+               className="font-semibold text-gray-700 underline"
+            >
+              {screenshot.url}
+            </a>
+          </div>
+          <img src={screenshot.img} width="50%" className="mt-8" />
         </div>
       )}
     </div>

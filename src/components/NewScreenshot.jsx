@@ -5,7 +5,7 @@ function NewScreenshot() {
   const [screenshotUrl, setScreenshotUrl] = useState("");
   const [image, setImage] = useState(null);
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
 
     //if (!image) return;
