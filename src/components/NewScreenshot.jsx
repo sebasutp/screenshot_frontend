@@ -7,7 +7,6 @@ function NewScreenshot() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    //if (!image) return;
     console.log(`submitting ${screenshotUrl}`);
   };
 
@@ -23,7 +22,6 @@ function NewScreenshot() {
   }
 
   const setScreenshotMessage = (e) => {
-    console.log("Callback for screenshot message");
     setImage(e.taget.value);
   }
 

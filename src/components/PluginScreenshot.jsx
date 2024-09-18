@@ -10,7 +10,6 @@ function NewScreenshotPlugin() {
       url: document.getElementById('urlInput').value,
       img: document.getElementById('screenshotImg').src
     };
-    console.log("esta es la url",url)
     const url = `${import.meta.env.VITE_BACKEND_URL}/screenshots/`
     fetch(url, {
         method: 'POST',
