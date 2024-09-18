@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import NavMenu from './NavMenu';
+import CardScreenshot from './CardScreenshot';
+import { useNavigate } from 'react-router-dom';
 
 function Screenshots() {
-  const [screenshots, setScreenshots] = useState({});
+  const [screenshots, setScreenshots] = useState([]);
   const [is_loading, setIsLoading] = useState(false);
-  const token = localStorage.getItem('token');
-
-  useEffect(() => {
+  
+  const navigate = useNavigate()
+  
+  const loadScreenshots = (token) => {
     setIsLoading(true);
     const url = `${import.meta.env.VITE_BACKEND_URL}/screenshots/`;
-    console.log(token)  
     fetch(url, {
       method: 'GET',
       headers: {
@@ -20,22 +23,45 @@ function Screenshots() {
         // Use the fetched screenshot data here
         setScreenshots(data);
         setIsLoading(false);
-        console.log(data);
       })
       .catch((error) => {
         console.error('Error fetching screenshot details:', error);
       });
-  }, []);
+  }
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!token) {
+      console.log("Token not found redirecting to /login")
+      navigate("/login")
+    } else {
+      loadScreenshots(token)
+    }
+  }, [navigate]);
+    
   return (
     <div>
-      {is_loading ? (
-        <img src='/assets/loading.gif' alt="Loading..." />
-      ) : (
-        <div>
-          <p>Number of screenshots: {screenshots.length}</p>
-        </div>
-      )}
+      {is_loading ? 
+        (
+          <img src='/assets/loading.gif' alt="Loading..." />
+        ) : 
+        (
+          <div>
+            <NavMenu />
+            <div className="flex flex-col items-center justify-center mt-24">
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+                {screenshots.map((screen, i) => (
+                  <CardScreenshot 
+                    key={i}
+                    screenshot={screen}
+                  />
+                ))
+                }
+              </div>
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 }

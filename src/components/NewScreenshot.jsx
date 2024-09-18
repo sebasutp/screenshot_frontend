@@ -1,5 +1,5 @@
 
-import React, { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 
 function NewScreenshot() {
   const [screenshotUrl, setScreenshotUrl] = useState("");
@@ -7,7 +7,6 @@ function NewScreenshot() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     console.log(`submitting ${screenshotUrl}`);
   };
 
@@ -22,8 +21,7 @@ function NewScreenshot() {
     }
   }
 
-  function setScreenshotMessage(e) {
-    console.log("Callback for screenshot message");
+  const setScreenshotMessage = (e) => {
     setImage(e.taget.value);
   }
 
