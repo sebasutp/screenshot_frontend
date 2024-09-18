@@ -1,5 +1,4 @@
 import { Routes, Route } from 'react-router-dom';
-import './App.css'
 import Login from './components/Login.jsx'
 import Item from './components/Item.jsx';
 import Screenshots from './components/Screenshots.jsx';
