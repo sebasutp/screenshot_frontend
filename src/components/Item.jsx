@@ -21,6 +21,14 @@ function Item() {
       });
   }, [id]);
 
+  function ShortenUrl(url) {
+    if (!url) {
+      return ""
+    }
+    return ((url.length <= 50) ? 
+      url : url.substring(0, 47) + "...");
+  }
+
   return (
     <div>
       {is_loading ? 
@@ -31,13 +39,13 @@ function Item() {
           <div className="flex flex-col items-center justify-center mt-8 px-8">
             <div className="w-fit">
               <p className="text-gray-700 dark:text-gray-400 text-lg font-semibold">
-                From this link was taken the screenshot 
+                Screenshot URL
                 <a 
                   href={screenshot.url}
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="font-medium text-indigo-600 dark:text-indigo-500 hover:underline ml-2"
-                  > {screenshot.url}
+                  > {ShortenUrl(screenshot.url)}
                 </a>
               </p>
             </div>           

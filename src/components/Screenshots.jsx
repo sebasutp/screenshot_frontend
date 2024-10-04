@@ -18,7 +18,17 @@ function Screenshots() {
         Authorization: `Bearer ${token}`
       }
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          if (response.status == 401) {
+            // The token is invalid
+            navigate("/login");
+          } else {
+            console.error('API error: ', response);
+          }
+        }
+        return response.json();
+      })
       .then((data) => {
         // Use the fetched screenshot data here
         setScreenshots(data);
