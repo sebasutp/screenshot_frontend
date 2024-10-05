@@ -33,7 +33,7 @@ function Item() {
     <div>
       {is_loading ? 
         (
-          <img src='/assets/loading.gif' alt="Loading..." />
+          <img src='./assets/loading.gif' alt="Loading..." />
         ) : 
         ( 
           <div className="flex flex-col items-center justify-center mt-8 px-8">
